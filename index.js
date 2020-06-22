@@ -204,6 +204,11 @@ io.sockets.on('connection', function(socket){
 					console.log('mysql error 148',err.code);
 				});
 			});
+			con.query(`INSERT INTO devices(mode) values (${data.mode})`, function(err){
+				con.on('error', function(err){
+					console.log('mysql error 148',err.code);
+				});
+			});			
 		});
 
 		console.log(data);
