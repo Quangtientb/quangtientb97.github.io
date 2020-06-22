@@ -89,7 +89,7 @@ io.sockets.on('connection', function(socket){
 		var salt 			= hash_data.salt;
 		
 	  
-		con.query('SELECT * FROM users where email=?',[email], function(err,result, fields){
+		con.query(`SELECT * FROM devices where device_id = 2`, function(err,result, fields){
 			con.on('error',function(err){
 				console.log('mysql error 78',err.code);
 			});
