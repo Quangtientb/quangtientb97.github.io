@@ -69,8 +69,9 @@ io.sockets.on('connection', function(socket){
 				con.on('error',function(err){
 					console.log('mysql error 78',err.code);
 				});
-			});
+			
 			console.log("result" + result);
+			});
 
 	var time = moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss');
 	// dang ki tai khoan
