@@ -65,13 +65,13 @@ function checkHashPassword(userPassword,salt){
 /*bat su kien ket noi server-------------------------------------------------*/
 io.sockets.on('connection', function(socket){
 			var device_id = 2;
-			con.query('SELECT * FROM devices where device_id = ?',[device_id], function(err,result, fields){
+			con.query(`SELECT * FROM devices where device_id = 2`, function(err,result, fields){
 				con.on('error',function(err){
 					console.log('mysql error 78',err.code);
-				});
-			
+				});			
 			console.log("result" + result);
 			});
+
 
 	var time = moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss');
 	// dang ki tai khoan
@@ -89,7 +89,7 @@ io.sockets.on('connection', function(socket){
 		var salt 			= hash_data.salt;
 		
 	  
-		con.query(`SELECT * FROM devices where device_id = 2`, function(err,result, fields){
+		con.query('SELECT * FROM users where email=?',[email], function(err,result, fields){
 			con.on('error',function(err){
 				console.log('mysql error 78',err.code);
 			});
