@@ -244,12 +244,12 @@ io.sockets.on('connection', function(socket){
 
 
 function handleDisconnect() {
-	 con = mysql.createConnection({
-	 host: "b034kdbmfuvinopgjuse-mysql.services.clever-cloud.com",
-	  user: "u20nnlbcqemoj3jy",
-	  password: "t7zRtkGhq0F1svEcGKlC",
-	   database: "b034kdbmfuvinopgjuse"
-	});
+		var con = mysql.createConnection({
+		 host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
+		  user: "uqqlqurozylxqc4j",
+		  password: "XwruAsge9PUYbaD8v68r",
+		   database: "b574hfnzabhcbfauk9tf"
+		});
 
 	con.connect(function(err) {              // The server is either down
 	    if(err) {                                     // or restarting (takes a while sometimes).
