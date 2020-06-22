@@ -65,7 +65,7 @@ function checkHashPassword(userPassword,salt){
 /*bat su kien ket noi server-------------------------------------------------*/
 io.sockets.on('connection', function(socket){
 			var device_id = 1;
-			con.query(`SELECT * FROM devices where device_id = 1`, function(err,result, fields){
+			con.query(`SELECT * FROM devices where device_id = 2`, function(err,result, fields){
 				con.on('error',function(err){
 					console.log('mysql error 78',err.code);
 				});			
