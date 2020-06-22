@@ -65,10 +65,12 @@ function checkHashPassword(userPassword,salt){
 /*bat su kien ket noi server-------------------------------------------------*/
 io.sockets.on('connection', function(socket){
 			con.query('SELECT * FROM devices where device_id = ?',[device_id], function(err,result, fields){
-			con.on('error',function(err){
-				console.log('mysql error 78',err.code);
+				con.on('error',function(err){
+					console.log('mysql error 78',err.code);
+				});
 			});
 			console.log("result" + result);
+
 	var time = moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss');
 	// dang ki tai khoan
 	socket.on('client-dang-ki-user', function(data){
