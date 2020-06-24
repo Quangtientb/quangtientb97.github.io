@@ -154,13 +154,13 @@ io.sockets.on('connection', function(socket){
 	socket.on('update_data', function(data){
 		//console.log(data);
 		//console.log('socket id la: ' + socket.id);
-		let sql = `CREATE TABLE IF NOT EXISTS device${data.device_id}_log (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,ThoiGian TIMESTAMP, chieuquay VARCHAR(255), tocdo INT(10)) ENGINE = InnoDB` ;
-		con.query(sql, function(err){
+		
+		con.query(`CREATE TABLE IF NOT EXISTS device${data.device_id}_log (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,ThoiGian TIMESTAMP, chieuquay VARCHAR(255), tocdo INT(10)) ENGINE = InnoDB`, function(err){
 			con.on('error', function(err){
 				console.log('mysql error 142',err.code);
 			});
 		});
-		sql = `INSERT INTO device${data.device_id}_log(chieuquay, tocdo, Thoigian) values (  \'${data.chieuquay}\', \'${data.tocdo}\', \'${moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss')}\')`;
+		let sql = `INSERT INTO device${data.device_id}_log(chieuquay, tocdo, Thoigian) values (  \'${data.chieuquay}\', \'${data.tocdo}\', \'${moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss')}\')`;
 		//console.log(sql);
 		con.query(sql, function(err){
 			con.on('error', function(err){
