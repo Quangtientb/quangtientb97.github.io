@@ -170,7 +170,7 @@ io.sockets.on('connection', function(socket){
 				if (result && result.length){
 					for (var i = 0; i < result.length; i++){
 						console.log(result[i].device_id);
-						myDevice[i] = result[i].device_id
+						myDevice[i] = result[i].device_id;
 					}
 				}
 			});
