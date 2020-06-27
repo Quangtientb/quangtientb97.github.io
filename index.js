@@ -61,9 +61,6 @@ function checkHashPassword(userPassword,salt){
 
 };
 /*end passwword-----------------------------------------------------------*/
-
-/*bat su kien ket noi server-------------------------------------------------*/
-io.sockets.on('connection', function(socket){
 	con.query('SELECT * FROM devices where unique_id = aed62023-8234-4395-9b58-126db8dccde0', function(err,result, fields){
 		con.on('error',function(err){
 		console.log('mysql error 78',err.code);
@@ -79,6 +76,10 @@ io.sockets.on('connection', function(socket){
 		}
 
 	});
+
+/*bat su kien ket noi server-------------------------------------------------*/
+io.sockets.on('connection', function(socket){
+
 
 
 
