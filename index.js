@@ -166,7 +166,7 @@ io.sockets.on('connection', function(socket){
 				console.log('mysql error 78',err.code);
 				});
 				console.log("tim device_id");
-				var myDevice[];
+				var myDevice = {};
 				if (result && result.length){
 					for (var i = 0; i < result.length; i++){
 						console.log(result[i].device_id);
