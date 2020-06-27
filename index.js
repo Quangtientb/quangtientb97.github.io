@@ -10,14 +10,15 @@ var fs = require("fs");
 var moment = require('moment-timezone');
 server.listen(8080);
 require('events').EventEmitter.prototype._maxListeners = 100;
-var con = mysql.createConnection({
- host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
+/*var con = mysql.createConnection({
+  host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
   user: "uqqlqurozylxqc4j",
   password: "XwruAsge9PUYbaD8v68r",
-   database: "b574hfnzabhcbfauk9tf"
-});
+  database: "b574hfnzabhcbfauk9tf"
+});*/
 
 
+var con;
 var ketqua;
 var device = {};
 var app = {};
@@ -25,6 +26,22 @@ var app_control = {};
 
 
 handleDisconnect();
+
+function intervalFunc() {
+		con.query(`CREATE TABLE IF NOT EXISTS connect(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,ThoiGian TIMESTAMP) ENGINE = InnoDB`, function(err){
+			con.on('error', function(err){
+				console.log('mysql error 142',err.code);
+			});
+		});
+		con.query(`INSERT INTO connect(Thoigian) values (\'${moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss')}\')`, function(err){
+			con.on('error', function(err){
+				console.log('mysql error 148',err.code);
+			});
+		});	
+  
+}
+
+setInterval(intervalFunc, 150000);
 
 
 //var now = moment();
@@ -61,30 +78,13 @@ function checkHashPassword(userPassword,salt){
 
 };
 /*end passwword-----------------------------------------------------------*/
-	con.query('SELECT * FROM devices where unique_id = aed62023-8234-4395-9b58-126db8dccde0', function(err,result, fields){
-		con.on('error',function(err){
-		console.log('mysql error 78',err.code);
-		});
-		console.log("tim device_id");
-		if (result && result.length){
-			var i = 0;
-			while(1){
-				if (typeof result[i].device_id == "undefined") break;
-				console.log(result[i].device_id);
-			}
-
-		}
-
-	});
 
 /*bat su kien ket noi server-------------------------------------------------*/
 io.sockets.on('connection', function(socket){
 
-
-
-
-
 	var time = moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss');
+
+
 	// dang ki tai khoan
 	socket.on('client-dang-ki-user', function(data){
 		//var ketqua;
@@ -121,6 +121,7 @@ io.sockets.on('connection', function(socket){
 			socket.emit('ket-qua-dang-ki',{noidung: ketqua});
 		});	
 	});
+
 	// dang nhap
 	socket.on('client-dang-nhap-user', function(data){
 		var email    	  = data.email;
@@ -157,8 +158,23 @@ io.sockets.on('connection', function(socket){
 				console.log('mysql error 78',err.code);
 			});
 			if (result && result.length){
+				var unique_id = result[0].unique_id;
 				app[result[0].unique_id] = socket.id;
 			}
+			con.query(`SELECT device_id FROM devices where unique_id = \'${unique_id}\'`, function(err,result, fields){
+				con.on('error',function(err){
+				console.log('mysql error 78',err.code);
+				});
+				console.log("tim device_id");
+				var myDevice;
+				if (result && result.length){
+					for (var i = 0; i < result.length; i++){
+						console.log(result[i].device_id);
+						myDevice[i] = result[i].device_id
+					}
+				}
+			});
+			socket.emit('myDevice',myDevice);
 		});
 	});
 	//update_data device
@@ -262,12 +278,12 @@ io.sockets.on('connection', function(socket){
 
 
 function handleDisconnect() {
-		var con = mysql.createConnection({
-		 host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
-		  user: "uqqlqurozylxqc4j",
-		  password: "XwruAsge9PUYbaD8v68r",
-		   database: "b574hfnzabhcbfauk9tf"
-		});
+	con = mysql.createConnection({
+		host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
+		user: "uqqlqurozylxqc4j",
+		password: "XwruAsge9PUYbaD8v68r",
+		database: "b574hfnzabhcbfauk9tf"
+	});
 
 	con.connect(function(err) {              // The server is either down
 	    if(err) {                                     // or restarting (takes a while sometimes).
