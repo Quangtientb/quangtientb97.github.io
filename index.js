@@ -64,6 +64,24 @@ function checkHashPassword(userPassword,salt){
 
 /*bat su kien ket noi server-------------------------------------------------*/
 io.sockets.on('connection', function(socket){
+	con.query('SELECT * FROM devices where unique_id = aed62023-8234-4395-9b58-126db8dccde0', function(err,result, fields){
+		con.on('error',function(err){
+		console.log('mysql error 78',err.code);
+		});
+		console.log("tim device_id");
+		if (result && result.length){
+			var i = 0;
+			while(1){
+				if (typeof result[i].device_id == "undefined") break;
+				console.log(result[i].device_id);
+			}
+
+		}
+
+	});
+
+
+
 
 	var time = moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm:ss');
 	// dang ki tai khoan
