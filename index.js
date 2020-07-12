@@ -45,7 +45,6 @@ function intervalFunc() {
 			});
 		});	
 }
-
 setInterval(intervalFunc, 150000);
 
 
