@@ -19,10 +19,10 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 
 
 var 	con = mysql.createConnection({
-		host: "databases.000webhost.com/index.php",
-		user: "id12911305_ewqewqeq",
-		password: "Thangnhocx_1997",
-		//database: "id12911305_asdf",
+		host: "sql106.epizy.com",
+		user: "epiz_26244836",
+		password: "Quangtien123",
+		database: "epiz_26244836_Quangtien",
 	});
 
 var ketqua;
@@ -283,11 +283,11 @@ io.sockets.on('connection', function(socket){
 
 
 function handleDisconnect() {
-	con = mysql.createConnection({
-		host: "databases.000webhost.com/index.php",
-		user: "id12911305_ewqewqeq",
-		password: "Thangnhocx_1997",
-		//database: "id12911305_asdf",
+	var con = mysql.createConnection({
+		host: "sql106.epizy.com",
+		user: "epiz_26244836",
+		password: "Quangtien123",
+		database: "epiz_26244836_Quangtien",
 	});
 
 	con.connect(function(err) {              // The server is either down
