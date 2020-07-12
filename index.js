@@ -21,7 +21,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 var 	con = mysql.createConnection({
 		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
-		password: "Quangtien123",
+		password: "Thangnhocx_1997",
 		database: "id12911305_asdf",
 	});
 
@@ -286,7 +286,7 @@ function handleDisconnect() {
 	con = mysql.createConnection({
 		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
-		password: "Quangtien123",
+		password: "Thangnhocx_1997",
 		database: "id12911305_asdf",
 	});
 
