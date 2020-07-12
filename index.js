@@ -18,7 +18,13 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 });*/
 
 
-var con;
+var 	con = mysql.createConnection({
+		host: "databases-auth.000webhost.com",
+		user: "id12911305_ewqewqeq",
+		password: "Quangtien123",
+		database: "id12911305_asdf",
+	});
+
 var ketqua;
 var device = {};
 var app = {};
@@ -279,10 +285,10 @@ io.sockets.on('connection', function(socket){
 
 function handleDisconnect() {
 	con = mysql.createConnection({
-		host: "b574hfnzabhcbfauk9tf-mysql.services.clever-cloud.com",
-		user: "uqqlqurozylxqc4j",
-		password: "XwruAsge9PUYbaD8v68r",
-		database: "b574hfnzabhcbfauk9tf"
+		host: "databases-auth.000webhost.com/",
+		user: "id12911305_ewqewqeq",
+		password: "Quangtien123",
+		database: "id12911305_asdf",
 	});
 
 	con.connect(function(err) {              // The server is either down
