@@ -19,7 +19,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 
 
 var 	con = mysql.createConnection({
-		host: "databases-auth.000webhost.com",
+		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
 		password: "Quangtien123",
 		database: "id12911305_asdf",
@@ -284,7 +284,7 @@ io.sockets.on('connection', function(socket){
 
 function handleDisconnect() {
 	con = mysql.createConnection({
-		host: "databases-auth.000webhost.com",
+		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
 		password: "Quangtien123",
 		database: "id12911305_asdf",
