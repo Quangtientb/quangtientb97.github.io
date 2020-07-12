@@ -22,7 +22,7 @@ var 	con = mysql.createConnection({
 		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
 		password: "Thangnhocx_1997",
-		database: "id12911305_asdf",
+		//database: "id12911305_asdf",
 	});
 
 var ketqua;
@@ -287,7 +287,7 @@ function handleDisconnect() {
 		host: "databases.000webhost.com",
 		user: "id12911305_ewqewqeq",
 		password: "Thangnhocx_1997",
-		database: "id12911305_asdf",
+		//database: "id12911305_asdf",
 	});
 
 	con.connect(function(err) {              // The server is either down
