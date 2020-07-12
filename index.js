@@ -44,7 +44,6 @@ function intervalFunc() {
 				console.log('mysql error 148',err.code);
 			});
 		});	
-  
 }
 
 setInterval(intervalFunc, 150000);
