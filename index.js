@@ -19,7 +19,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 
 
 var 	con = mysql.createConnection({
-		host: "sql106.epizy.com",
+		host: "185.27.134.10",
 		user: "epiz_26244836",
 		password: "Quangtien123",
 		database: "epiz_26244836_Quangtien",
@@ -284,7 +284,7 @@ io.sockets.on('connection', function(socket){
 
 function handleDisconnect() {
 	var con = mysql.createConnection({
-		host: "sql106.epizy.com",
+		host: "185.27.134.10",
 		user: "epiz_26244836",
 		password: "Quangtien123",
 		database: "epiz_26244836_Quangtien",
